@@ -7,8 +7,12 @@
 </head>
 <body>
     <h1>Listado de post</h1>
-    {% for publication in post_list%}
-        <li><h2>{{ publication.title }}</h2></li>
+    {% for publication in post_list %}
+        <ul>
+            <li>
+                <a href="{% url 'post_detail' publication.id %}"><h2>{{ publication.title }}</h2></a>
+            </li>
+        </ul>
     {% endfor %}
 </body>
 </html>

@@ -12,7 +12,14 @@
     <a href="{% url 'post_list' %}"><h1>Blog personal</h1></a>
     <a href="{% url 'post_new' %}">Crear un Post</a>
     <a href="{% url 'login' %}">Iniciar sesion</a>
-    {% block content %}
+    {% if user.is_authenticated %}
+        <p>Hola, {{ user.username }}!</p>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Cerrar sesion</button>
+        </form>
+        {% endif %}
+     {% block content %}
     {% endblock %}
 </body>
 </html>

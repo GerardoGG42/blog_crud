@@ -5,6 +5,10 @@
     <h3>{{ post.title }}</h3>
     <p>{{ post.author }}</p>
     <p>{{ post.body }}</p>
+
+
+  {% if post.author.pk == request.user.pk %}
     <a href="{% url 'post_edit' post.pk %}">Editar Post</a>
     <a href="{% url 'post_delete' post.id %}"> Borrar</a>
+  {% endif %}
 {% endblock content %}
